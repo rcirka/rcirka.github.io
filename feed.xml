@@ -2,16 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JBake</title>
-    <link>http://jbake.org</link>
-    <atom:link href="http://jbake.org/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://rcirka.github.io</link>
+    <atom:link href="http://rcirka.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <description>JBake Bootstrap Template</description>
     <language>en-gb</language>
-    <pubDate>Tue, 7 Jun 2016 09:24:45 -0400</pubDate>
-    <lastBuildDate>Tue, 7 Jun 2016 09:24:45 -0400</lastBuildDate>
+    <pubDate>Tue, 14 Jun 2016 18:48:17 -0400</pubDate>
+    <lastBuildDate>Tue, 14 Jun 2016 18:48:17 -0400</lastBuildDate>
 
     <item>
+      <title>Packaging and deploying your Scala application with SBT</title>
+      <link>http://rcirka.github.io/blog/2016/sbt-distribute.html</link>
+      <pubDate>Tue, 7 Jun 2016 00:00:00 -0400</pubDate>
+      <guid isPermaLink="false">blog/2016/sbt-distribute.html</guid>
+      	<description>
+	&lt;p&gt;Deploying and running your application is relatively easy with sbt native packager.&lt;/p&gt;&lt;h1&gt;Adding the dependencies&lt;/h1&gt;&lt;p&gt;In projects/plugins.sbt, add the following line of code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;addSbtPlugin(&amp;quot;com.typesafe.sbt&amp;quot; % &amp;quot;sbt-native-packager&amp;quot; % &amp;quot;1.1.1&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In build.sbt, add the following lines of code:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;enablePlugins(JavaAppPackaging)
+enablePlugins(UniversalPlugin)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Note: if you currently have an sbt session open, you will need to run &apos;reload&apos;&lt;/p&gt;&lt;p&gt;This will enable two commands:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;stage&lt;/li&gt;
+  &lt;li&gt;dist&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&apos;stage&apos; will generate the libs and scripts. &apos;dist&apos; will create a zip file with them.&lt;/p&gt;&lt;p&gt;Whn you run &apos;sbt stage&apos;, it will create the directory &apos;target/universal/stage&apos;. In this directory, there will be two directories - lib and bin. The lib directory will contain all of the projects dependency jars and the application jar. The bin directory will contain two scripts, a unix batch file and a windows batch file. To run your application, just run the appropriate file for your operating system.&lt;/p&gt;&lt;p&gt;Unix/Mac&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./myapp 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Windows&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;myapp.bat
+&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;Customizing the zip file name&lt;/h1&gt;&lt;p&gt;If you want to change the name of the zip file that is generated, add the following to build.sbt&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;packageName in Universal := &amp;quot;myapp-deploy&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;Including unmanaged jars&lt;/h1&gt;&lt;p&gt;If you have jars that you have imported into your project lib directory manually (instead of adding them to your libraryDependencies in sbt), you will need to add the following line to build.sbt:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mappings in Universal &amp;lt;+= (packageBin in Compile) map { jar =&amp;gt;
+  jar -&amp;gt; (&amp;quot;lib/&amp;quot; + jar.getName)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h1&gt;Jvm options for Windows&lt;/h1&gt;&lt;p&gt;Packaging SBT Native packager&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;http://www.scala-sbt.org/sbt-native-packager&quot;&gt;http://www.scala-sbt.org/sbt-native-packager&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Setting java parameters&lt;/p&gt;&lt;p&gt;Windows&lt;/p&gt;&lt;p&gt;Mac/Linux&lt;/p&gt;&lt;p&gt;my test post blah blah&lt;/p&gt;
+	</description>
+    </item>
+    <item>
       <title>Fourth Post</title>
-      <link>http://jbake.org/blog/2013/fourth-post.html</link>
+      <link>http://rcirka.github.io/blog/2013/fourth-post.html</link>
       <pubDate>Thu, 17 Oct 2013 00:00:00 -0400</pubDate>
       <guid isPermaLink="false">blog/2013/fourth-post.html</guid>
       	<description>
@@ -41,7 +69,7 @@ libero, ut vehicula lectus nunc ut lorem. Aliquam erat volutpat.&lt;/p&gt;
     </item>
     <item>
       <title>Third Post</title>
-      <link>http://jbake.org/blog/2013/third-post.html</link>
+      <link>http://rcirka.github.io/blog/2013/third-post.html</link>
       <pubDate>Thu, 26 Sep 2013 00:00:00 -0400</pubDate>
       <guid isPermaLink="false">blog/2013/third-post.html</guid>
       	<description>
@@ -71,7 +99,7 @@ libero, ut vehicula lectus nunc ut lorem. Aliquam erat volutpat.&lt;/p&gt;
     </item>
     <item>
       <title>Second Post</title>
-      <link>http://jbake.org/blog/2013/second-post.html</link>
+      <link>http://rcirka.github.io/blog/2013/second-post.html</link>
       <pubDate>Sun, 25 Aug 2013 00:00:00 -0400</pubDate>
       <guid isPermaLink="false">blog/2013/second-post.html</guid>
       	<description>
@@ -84,7 +112,7 @@ libero, ut vehicula lectus nunc ut lorem. Aliquam erat volutpat.&lt;/p&gt;
     </item>
     <item>
       <title>First Post</title>
-      <link>http://jbake.org/blog/2013/first-post.html</link>
+      <link>http://rcirka.github.io/blog/2013/first-post.html</link>
       <pubDate>Wed, 24 Jul 2013 00:00:00 -0400</pubDate>
       <guid isPermaLink="false">blog/2013/first-post.html</guid>
       	<description>
