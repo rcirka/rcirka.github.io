@@ -89,7 +89,7 @@ enablePlugins(UniversalPlugin)
 <pre><code>mappings in Universal &lt;+= (packageBin in Compile) map { jar =&gt;
   jar -&gt; (&quot;lib/&quot; + jar.getName)
 }
-</code></pre><h1>Jvm options for Windows</h1><p>Packaging SBT Native packager</p><p><a href="http://www.scala-sbt.org/sbt-native-packager">http://www.scala-sbt.org/sbt-native-packager</a></p><p>Setting java parameters</p><p>Windows</p><p>Mac/Linux</p><p>my test post blah blah</p></p>
+</code></pre><h1>Jvm options for Windows</h1><p>Packaging SBT Native packager</p><p><a href="http://www.scala-sbt.org/sbt-native-packager">http://www.scala-sbt.org/sbt-native-packager</a></p><p>Setting java parameters</p><h2>Windows</h2><p>To add command line parameters for windows, you will need to create an file named APPLICATIONNAME_config.txt. The file name is case sensitive. If you are unsure of the exact name, you can open up the .bat file that was generated, it will be near the top.</p><h2>Mac/Linux</h2><p>There are multiple ways. You can add them to your build.sbt, or create an application.ini and pass the parameters there.</p><p>A code example available @ <a href="https://github.com/rcirka/sbt-distribute">https://github.com/rcirka/sbt-distribute</a></p></p>
 
 	<hr />
 	
